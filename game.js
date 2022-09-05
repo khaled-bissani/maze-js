@@ -2,6 +2,7 @@ window.onload = function() {
     var containers = document.getElementsByClassName('boundary');
     var startGame = document.getElementById('start');
     var endGame = document.getElementById('end');
+    var outOfBound = document.getElementById('game');
     var status = document.getElementById('status');
     var sum=0
 
@@ -14,6 +15,12 @@ window.onload = function() {
         containers[i].addEventListener('mouseover', function() {gameOver()});
     }
 
+    outOfBound.onmouseleave = function () {outOfBoundary();}
+
+    // function startGame() {
+        
+
+    // }
 
     function startOnClick() {
         status.textContent='Game restarted';
@@ -41,10 +48,15 @@ window.onload = function() {
 
     function gameOver() {
         for (var j = 0; j < i-1; j++) {
-            containers[j].style.backgroundColor="red";
+            containers[j].classList.add("youlose");
         }
+        console.log(j)
         sum-=10
         status.textContent='You lost ('+sum+' points) go back to S';
+    }
+
+    function outOfBoundary() {
+        status.textContent='You Lost';
     }
     
 }
